@@ -10,9 +10,16 @@ const appReducer = (state = initState, action) => {
     switch(action.type){
         case 'CREATE_APP':
             console.log('created project', action.app)
+            return state
+    
+        case 'CREATE_APP_ERROR':
+            console.log('failed to create app', action.err)
+            return state
+        
+        default:
+            return state
     }
 
-    return state
 }
 
 export default appReducer
