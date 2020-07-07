@@ -1,8 +1,8 @@
 const initState = {
     apps: [
-        {id: '1', title: 'Software Engineer Google', status: 'Applied'},
-        {id: '2', title: 'Software Engineer Facebook', status: 'Offer'},
-        {id: '3', title: 'Software Engineer Netflix', status: 'Rejected'}
+        {id: '1', job_title: 'Software Engineer Google', status: 'Applied'},
+        {id: '2', job_title: 'Software Engineer Facebook', status: 'Offer'},
+        {id: '3', job_title: 'Software Engineer Netflix', status: 'Rejected'}
     ]
 }
 

@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import ApplicationList from '../applications/ApplicationList'
 import NewAppForm from '../applications/NewAppForm'
 import { connect } from 'react-redux' //Connects this component to the redux store
+import { firestoreConnect } from 'react-redux-firebase'
+import { compose } from 'redux' 
 
 class Home extends Component {
     render() {
@@ -17,9 +19,15 @@ class Home extends Component {
 }
 
 const mapStateToProps = (state) => { //connect() users this function to connect this component to the reducer
+    console.log(state)
     return {
-        apps: state.app.apps
+        apps: state.firestore.ordered.apps
     }
 }
 
-export default connect(mapStateToProps)(Home) 
+export default compose(
+    connect(mapStateToProps),
+    firestoreConnect([
+        {collection: 'apps'}
+    ])
+)(Home) 
