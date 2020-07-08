@@ -1,9 +1,5 @@
 const initState = {
-    apps: [
-        {id: '1', job_title: 'Software Engineer Google', status: 'Applied'},
-        {id: '2', job_title: 'Software Engineer Facebook', status: 'Offer'},
-        {id: '3', job_title: 'Software Engineer Netflix', status: 'Rejected'}
-    ]
+
 }
 
 const appReducer = (state = initState, action) => {
@@ -16,6 +12,14 @@ const appReducer = (state = initState, action) => {
             console.log('failed to create app', action.err)
             return state
         
+        case 'DELETE_APP_SUCCESS':
+            console.log('app deleted')
+            return state
+        
+        case 'DELETE_APP_ERROR':
+            console.log('app delete failed', action.err)
+            return state
+            
         default:
             return state
     }
