@@ -4,11 +4,11 @@ const ApplicationItem = ({app}) => {
 
         return (
             <div className="align-middle">
-                <p>
+                <span>
                     <p>{app.company +' | '+app.job_title}</p>
-                    <button>Remove</button>
+                    <button onClick={removeApp}>Remove</button>
                     <button>Action</button>
-                </p>
+                </span>
             </div>
         )
 }

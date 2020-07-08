@@ -15,7 +15,7 @@ const store = createStore(rootReducer,
   compose(
     applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })), //Links getFireBase and getFireStore to actions
     reduxFirestore(fbconfig),
-    reactReduxFirebase(fbconfig)
+    reactReduxFirebase(fbconfig, {useFirestoreForProfile: true, userProfile:'users'}) //Adds users doc to firebase reducer
   ) 
 ) 
 

@@ -2,12 +2,13 @@ export const createApp = (app) => {
     return (dispatch, getState , {getFirebase, getFirestore}) => {
         
         const firestore = getFirestore()
+        const uid = getState().firebase.auth.uid
 
         //Timestamp
         var curDate = new Date()
         var created = curDate.getFullYear() + "." + (curDate.getMonth() + 1) + "." + curDate.getDate()
         
-        firestore.collection('apps').add({
+        firestore.collection('users').doc(uid).collection('app_list').add({
             ...app,
             status: 'Applied',
             createdAt: created
@@ -18,4 +19,8 @@ export const createApp = (app) => {
         })
         
     }
+}
+
+export const removeApp = (app) => {
+    
 }

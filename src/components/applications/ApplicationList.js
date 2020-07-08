@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import ApplicationItem from './ApplicationItem'
 
 const ApplicationList = ({apps}) =>{
