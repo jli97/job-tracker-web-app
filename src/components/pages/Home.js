@@ -4,7 +4,7 @@ import NewAppForm from '../applications/NewAppForm'
 import { connect } from 'react-redux' //Connects this component to the redux store
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux' 
-import styled from 'styled-components'
+import { Container, Row, Col} from 'react-bootstrap'
 
 class Home extends Component {
     
@@ -12,10 +12,19 @@ class Home extends Component {
         const { apps } = this.props
 
         return (
-            <HomePageWrapper>
-                <ApplicationList apps={apps}/>
-                <NewAppForm/>
-            </HomePageWrapper>
+            <Container style={homePageStyle}>
+                <Row style = {headerStyle}>
+                    <Col style={{borderStyle: 'solid'}}>
+                        Header
+                    </Col>
+                    <Col>
+                        <NewAppForm/>
+                    </Col>
+                </Row>
+                <Row style={listStyle}>
+                    <ApplicationList apps={apps}/>
+                </Row>
+            </Container>
         )
     }
 }
@@ -44,11 +53,25 @@ export default compose(
     })
 )(Home) 
 
-/* Styled Components */
+/* Styling */
 
-const HomePageWrapper = styled.div`
-    border-style: solid;
-    border-color: green;
-    margin-top: 1%;
-    padding: 1%;
-`
+const homePageStyle = {
+    borderStyle: 'solid',
+    borderColor: 'green',
+    marginTop: '1%',
+    padding: '0%',
+    width: '100%'
+}
+
+const listStyle = {
+    padding:'0%',
+    margin:'0px',
+}
+
+const headerStyle = {
+    borderStyle: 'solid',
+    borderColor: 'pink',
+    padding: '0%',
+    margin:'0px',
+    width: '100%',
+}

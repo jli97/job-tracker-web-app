@@ -1,24 +1,36 @@
 import React from 'react'
 import ApplicationItem from './ApplicationItem'
-import styled from 'styled-components'
+import {Container , Row} from 'react-bootstrap'
 
 const ApplicationList = ({apps}) =>{
     return (
-        <ApplicationListWrapper>
-            <p>Application List</p>
+        <Container style={appListStyle}>
             { apps && apps.map(app => {
                 return (
+                    <Row style={rowStyle}>
                         <ApplicationItem app={app} key={app.id}/>
+                    </Row>
                 )
             })}
-        </ApplicationListWrapper>
+        </Container>
     ) 
 }
 
 export default ApplicationList
 
-/* Styled Components */
-const ApplicationListWrapper = styled.ul`
-    border-style: solid;
-    border-color: blue;
-`
+/* Styling */
+const appListStyle = {
+    borderTop: 'solid',
+    borderColor: 'gray',
+    borderWidth: '1px',
+    overflow: 'hidden',
+    width: '100%',
+    background: '#DFDFDF',
+    padding: '0'
+}
+
+const rowStyle = {
+    margin: '0%',
+    width: '100%',
+    padding: '0',
+}

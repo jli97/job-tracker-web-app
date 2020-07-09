@@ -2,9 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { deleteApp } from '../../store/actions/appActions'
 import { updateStatusApp } from '../../store/actions/appActions'
-import Dropdown from 'react-bootstrap/Dropdown'
-import Button from 'react-bootstrap/Button'
-import styled from 'styled-components'
+import {Button, Dropdown, Container, Row, Col} from 'react-bootstrap'
 
 class ApplicationItem extends Component{
 
@@ -22,9 +20,9 @@ class ApplicationItem extends Component{
         render(){
             return (
             
-            <ApplicationItemWrapper>
-                <div className="align-middle">
-                    <TextContent>{this.props.app.company + ' | ' + this.props.app.job_title + ' - '+ this.props.app.status}</TextContent>
+            <Container style={applicationItemStyle}>
+                <div>
+                    <div style={textStyle}>{this.props.app.company + ' | ' + this.props.app.job_title + ' - '+ this.props.app.status}</div>
 
                     <Button style={rmBtnStyle} onClick={this.handleDelete}>Remove</Button>
                     <Dropdown style={actionBtnStyle}>
@@ -41,7 +39,7 @@ class ApplicationItem extends Component{
                     </Dropdown>
 
                 </div>
-            </ApplicationItemWrapper>
+            </Container>
             
             )
         }
@@ -57,18 +55,22 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(null, mapDispatchToProps)(ApplicationItem)
 
 
-/* Styling (Some Styled Components, Some Bootstrap Styling)*/
+/* Styling */
 
-const ApplicationItemWrapper = styled.div`
-    border-style: solid;
-    padding: 1%;
-    margin:1%;
-    overflow: hidden;
-    textAlign: 'center'
-`
-const TextContent = styled.p`
-    float: left;
-`
+const applicationItemStyle = {
+    borderStyle: 'solid',
+    borderColor: 'gray',
+    borderWidth: '1px',
+    marginTop:'-1px',
+    padding: '1%',
+    overflow: 'hidden',
+    textAlign: 'center',
+    width: '100%',
+}
+
+const textStyle = {
+    float: 'left',
+}
 
 const rmBtnStyle = {
     background: '#ff0000',

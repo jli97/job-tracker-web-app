@@ -10,7 +10,6 @@ import thunk from 'redux-thunk' //Middleware that enhances the store with functi
 import { reduxFirestore, getFirestore } from 'redux-firestore'
 import { reactReduxFirebase, getFirebase } from 'react-redux-firebase'
 import fbconfig from './config/fbconfig'
-import 'materialize-css'
 
 const store = createStore(rootReducer, 
   compose(
