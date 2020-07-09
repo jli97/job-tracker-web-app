@@ -36,3 +36,14 @@ export const deleteApp = (appId) => {
         })
     }
 }
+
+export const updateStatusApp = (appId, status) => {
+    return(dispatch, getState, {getFirestore}) => {
+        const firestore = getFirestore()
+        const uid = getState().firebase.auth.uid
+
+        firestore.collection('users').doc(uid).collection('app_list').doc(appId).update({
+            status: status
+        })
+    }
+}

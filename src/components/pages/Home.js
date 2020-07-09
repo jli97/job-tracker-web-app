@@ -4,6 +4,7 @@ import NewAppForm from '../applications/NewAppForm'
 import { connect } from 'react-redux' //Connects this component to the redux store
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux' 
+import styled from 'styled-components'
 
 class Home extends Component {
     
@@ -11,10 +12,10 @@ class Home extends Component {
         const { apps } = this.props
 
         return (
-            <div className="home container">
+            <HomePageWrapper>
                 <ApplicationList apps={apps}/>
                 <NewAppForm/>
-            </div>
+            </HomePageWrapper>
         )
     }
 }
@@ -42,3 +43,12 @@ export default compose(
         ])
     })
 )(Home) 
+
+/* Styled Components */
+
+const HomePageWrapper = styled.div`
+    border-style: solid;
+    border-color: green;
+    margin-top: 1%;
+    padding: 1%;
+`

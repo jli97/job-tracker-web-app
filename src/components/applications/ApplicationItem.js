@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { deleteApp } from '../../store/actions/appActions'
+import { updateStatusApp } from '../../store/actions/appActions'
+import Dropdown from 'react-bootstrap/Dropdown'
+import Button from 'react-bootstrap/Button'
+import styled from 'styled-components'
 
 class ApplicationItem extends Component{
 
@@ -10,24 +14,74 @@ class ApplicationItem extends Component{
             this.props.deleteApp(id);
         }
 
+        handleDropdownAction = (e) => {
+            const appId = this.props.app.id;
+            this.props.updateStatusApp(appId, e.target.id)
+        }
+
         render(){
             return (
+            
+            <ApplicationItemWrapper>
+                <div className="align-middle">
+                    <TextContent>{this.props.app.company + ' | ' + this.props.app.job_title + ' - '+ this.props.app.status}</TextContent>
 
-            <div className="align-middle">
-                <span>
-                    <p>{this.props.app.company + ' | ' + this.props.app.job_title + ' - '+ this.props.app.status}</p>
-                    <button onClick={this.handleDelete}>Remove</button>
-                    <button>Action</button>
-                </span>
-            </div>
+                    <Button style={rmBtnStyle} onClick={this.handleDelete}>Remove</Button>
+                    <Dropdown style={actionBtnStyle}>
+                        <Dropdown.Toggle variant="success" id="dropdown-basic">
+                            Action
+                        </Dropdown.Toggle>
+
+                        <Dropdown.Menu>
+                            <Dropdown.Item id='Applied' onClick={this.handleDropdownAction}>Applied</Dropdown.Item>
+                            <Dropdown.Item id='Interview' onClick={this.handleDropdownAction}>Interview</Dropdown.Item>
+                            <Dropdown.Item id='Offer' onClick={this.handleDropdownAction}>Offer</Dropdown.Item>
+                            <Dropdown.Item id='Rejected' onClick={this.handleDropdownAction}>Rejected</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
+
+                </div>
+            </ApplicationItemWrapper>
+            
             )
         }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return{
-        deleteApp: (id) => dispatch(deleteApp(id))
+        deleteApp: (id) => dispatch(deleteApp(id)),
+        updateStatusApp: (id, status) => dispatch(updateStatusApp(id, status))
     }
 }
 
 export default connect(null, mapDispatchToProps)(ApplicationItem)
+
+
+/* Styling (Some Styled Components, Some Bootstrap Styling)*/
+
+const ApplicationItemWrapper = styled.div`
+    border-style: solid;
+    padding: 1%;
+    margin:1%;
+    overflow: hidden;
+    textAlign: 'center'
+`
+const TextContent = styled.p`
+    float: left;
+`
+
+const rmBtnStyle = {
+    background: '#ff0000',
+    color: '#fff',
+    float:'right',
+    marginLeft: '5px',
+    width:'80px',
+    padding: '0px'
+}
+
+const actionBtnStyle = {
+    color: '#DFDFDF',
+    float:'right',
+    verticalAlign:'text-bottom',
+    position:'static'
+}
