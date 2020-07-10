@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Form, Button, Row, Col} from 'react-bootstrap'
+import {Form, Button, Row, Col, Container} from 'react-bootstrap'
 import { createApp} from '../../store/actions/appActions'
 import { connect } from 'react-redux'
 
@@ -28,8 +28,8 @@ class NewAppForm extends Component {
 
     render() {
         return (
-            <div>
-                <Form onSubmit={this.handleSubmit} style={formStyle}>
+            <Container style={formStyle}>
+                <Form onSubmit={this.handleSubmit}>
                     <Row style = {rowStyle}>
                         <Col style = {colStyle}>
                             <Form.Group onChange={this.handleChange} controlId="job_title">
@@ -41,12 +41,12 @@ class NewAppForm extends Component {
                                 <Form.Control placeholder="Company"/>
                             </Form.Group>
                         </Col>
-                        <Col style = {colStyle}>
-                            <Button variant="success" type="submit">Add</Button>
-                        </Col>
+                        
+                        <Button variant="success" type="submit">Add</Button>
+
                     </Row>
                 </Form>
-            </div>
+            </Container>
         )
     }
 }
@@ -62,15 +62,16 @@ export default connect(null, mapDispatchToProps)(NewAppForm)
 /* Styling */
 
 const formStyle = {
-    border: 'solid',
-    
+    width:'100%',
+    padding:'0%',
 }
 
 const rowStyle = {
-    alignItems: 'flex-end'
+    alignItems: 'center',
+    margin:'auto',
+    width:'100%',
 }
 
 const colStyle = {
-    
+    padding: '0%',
 }
-

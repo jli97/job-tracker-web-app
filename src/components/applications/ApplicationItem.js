@@ -82,7 +82,6 @@ const rmBtnStyle = {
 }
 
 const actionBtnStyle = {
-    color: '#DFDFDF',
     float:'right',
     verticalAlign:'text-bottom',
     position:'static'
