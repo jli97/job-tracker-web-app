@@ -13,7 +13,7 @@ const SignIn = (props) => {
             firebase.auth.FacebookAuthProvider.PROVIDER_ID,
             firebase.auth.GithubAuthProvider.PROVIDER_ID
         ],
-        signInSuccessUrl: 'http://localhost:3000/',
+        signInSuccessUrl: '/',
         callbacks:{
             signInSuccessWithAuthResult: (authResult) => {
                 if(authResult.additionalUserInfo.isNewUser){ //If new user

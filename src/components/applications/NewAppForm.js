@@ -42,7 +42,7 @@ class NewAppForm extends Component {
                             </Form.Group>
                         </Col>
                         
-                        <Button style = {{marginRight:'1%'}}variant="success" type="submit">Add</Button>
+                        <Button style = {{float:'right', marginRight: '2%'}} variant="success" type="submit">Add</Button>
 
                     </Row>
                 </Form>
@@ -67,6 +67,7 @@ const formStyle = {
 }
 
 const rowStyle = {
+    display:'inline-block',
     alignItems: 'center',
     margin:'auto',
     width:'100%',

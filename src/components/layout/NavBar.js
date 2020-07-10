@@ -6,7 +6,7 @@ import SignedOutLinks from './SignedOutLinks'
 
 const NavBar = (props) => {
     const { auth, profile } = props
-    const links = auth.uid ? <SignedInLinks profile={profile}/> : <SignedOutLinks/> //Checks if user is signed in
+    const links = (auth.uid && !auth.isAnonymous) ? <SignedInLinks profile={profile}/> : <SignedOutLinks/> //Checks if user is signed in
 
     return(
         <nav className="nav-wrapper grey darken-3">

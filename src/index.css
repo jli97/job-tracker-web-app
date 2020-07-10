@@ -12,6 +12,25 @@ code {
     monospace;
 }
 
-.dropdown-toggle::after {
+.dropdown-toggle-noicon::after {
   display:none !important;
+}
+
+.dropdown-toggle-usericon:after {
+  display:none !important;
+}
+
+.user-menu-items, .user-menu-items:hover {
+  color: black;
+  text-decoration: none;
+}
+
+.signin-link, .signin-link:hover {
+  color:white;
+  text-decoration: none;
+}
+
+.brand-logo, .brand-logo:hover {
+  color:white;
+  text-decoration: none;
 }

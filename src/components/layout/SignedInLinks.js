@@ -1,18 +1,28 @@
-import React, { Profiler } from 'react'
+import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signOut } from '../../store/actions/authActions'
+import {Button, Dropdown} from 'react-bootstrap'
+import DropdownItem from 'react-bootstrap/esm/DropdownItem'
 
 const SignedInLinks = (props) => {
     return (
         <ul className="right">
-            <li><a onClick={props.signOut}>Logout</a></li>
-            <li><NavLink to='/' className='btn btn-floating gray lighten-1'>
-                {props.profile.initials}
-            </NavLink> </li>
+            <li>
+                <Dropdown>
+                        <Dropdown.Toggle className='btn btn-floating gray lighten-1' variant="success" bsPrefix="dropdown-toggle-usericon">
+                            {props.profile.initials}
+                        </Dropdown.Toggle >
+                            <Dropdown.Menu>
+                                <NavLink to='/settings' className="user-menu-items">Settings</NavLink>
+                                <NavLink to='/' onClick={props.signOut} className="user-menu-items">Logout</NavLink>
+                            </Dropdown.Menu>
+                </Dropdown>
+            </li>
         </ul>
     )
 }
+
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -21,3 +31,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(null, mapDispatchToProps)(SignedInLinks)
+
+
+

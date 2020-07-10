@@ -5,7 +5,7 @@ const initState = {
 const appReducer = (state = initState, action) => {
     switch(action.type){
         case 'CREATE_APP':
-            console.log('created project', action.app)
+            console.log('created app', action.app)
             return state
     
         case 'CREATE_APP_ERROR':

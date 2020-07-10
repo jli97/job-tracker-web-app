@@ -2,14 +2,17 @@ import React, { Component } from 'react'
 import ApplicationList from '../applications/ApplicationList'
 import NewAppForm from '../applications/NewAppForm'
 import { connect } from 'react-redux' //Connects this component to the redux store
-import { firestoreConnect } from 'react-redux-firebase'
+import { firestoreConnect, getFirebase } from 'react-redux-firebase'
 import { compose } from 'redux' 
 import { Container, Row, Col, Dropdown} from 'react-bootstrap'
 
 class Home extends Component {
-    
+    componentDidMount(){
+        console.log(this.props)
+    }
+
     render() {
-        const { apps, profile, auth } = this.props
+        const { apps, profile } = this.props
         const name = profile.isEmpty ?  'Someone\'s List' : (profile.firstname + '\'s List')
         console.log(this.props)
         
@@ -21,7 +24,7 @@ class Home extends Component {
                     </Col>
                     <Col style={addBtnWrapperStyle}>
                         <Dropdown>
-                            <Dropdown.Toggle style={addBtnStyle} variant="success" >
+                            <Dropdown.Toggle style={addBtnStyle} variant="success" bsPrefix="dropdown-toggle-noicon">
                             +
                             </Dropdown.Toggle>
                                 <Dropdown.Menu>
@@ -70,7 +73,7 @@ const homePageStyle = {
     borderColor: 'green',
     marginTop: '1%',
     padding: '0%',
-    width: '100%'
+    width: '100%',
 }
 
 const headerStyle = {
@@ -101,6 +104,9 @@ const addBtnStyle = {
 }
 
 const listStyle = {
+    borderStyle:'solid',
+    borderTop:'none',
+    minHeight: '20rem',
     padding:'0%',
     margin:'0px',
 }
