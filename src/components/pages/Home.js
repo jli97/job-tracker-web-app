@@ -19,18 +19,15 @@ class Home extends Component {
                     <Col style={hdrTextStyle}>
                         <p>{name}</p>
                     </Col>
-                    <Col>
-                    <Dropdown>
-                        <Dropdown.Toggle icon={null} variant="success" id="dropdown-basic">
-                        +
-                        </Dropdown.Toggle>
-                            <Dropdown.Menu>
-                                <NewAppForm/>
-                            </Dropdown.Menu>
-                    </Dropdown>
-                    </Col>
-                    <Col style={hdrFormStyle}>
-                        <NewAppForm/>
+                    <Col style={addBtnWrapperStyle}>
+                        <Dropdown>
+                            <Dropdown.Toggle style={addBtnStyle} variant="success" >
+                            +
+                            </Dropdown.Toggle>
+                                <Dropdown.Menu>
+                                    <NewAppForm/>
+                                </Dropdown.Menu>
+                        </Dropdown>
                     </Col>
                 </Row>
                 <Row style={listStyle}>
@@ -91,13 +88,16 @@ const hdrTextStyle = {
     justifyContent: 'end', 
 }
 
-const addBtnStyle = {
-    borderRadius:'50%'
+const addBtnWrapperStyle = {
+    margin:'auto',
 }
-const hdrFormStyle = {
-    padding:'0',
-    textAlign: 'bottom',
-    verticalAlign: 'middle'
+const addBtnStyle = {
+    width: '50px',
+    height: '50px',
+    borderRadius:'50%',
+    float: 'right',
+    textAlign: 'center',
+    lineHeight: '50px',
 }
 
 const listStyle = {

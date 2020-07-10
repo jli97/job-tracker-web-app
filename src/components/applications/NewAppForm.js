@@ -42,7 +42,7 @@ class NewAppForm extends Component {
                             </Form.Group>
                         </Col>
                         
-                        <Button variant="success" type="submit">Add</Button>
+                        <Button style = {{marginRight:'1%'}}variant="success" type="submit">Add</Button>
 
                     </Row>
                 </Form>
@@ -73,5 +73,5 @@ const rowStyle = {
 }
 
 const colStyle = {
-    padding: '0%',
+    padding: '2%',
 }
