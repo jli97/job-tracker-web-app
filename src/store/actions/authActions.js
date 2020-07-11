@@ -23,8 +23,6 @@ export const createUser = (newUser) => { //Creates user entry in database
     return (dispatch, getState, {getFirestore}) => {
         const firestore = getFirestore()
 
-        console.log(newUser)
-
         firestore.collection('users').doc(newUser.user.uid).set({
            firstname: newUser.additionalUserInfo.profile.given_name,
            lastname: newUser.additionalUserInfo.profile.family_name,
@@ -45,4 +43,20 @@ export const createUser = (newUser) => { //Creates user entry in database
 
     }
         
+}
+
+export const deleteUser = (user) => {
+    return(dispatch, getState, {getFirestore, getFirebase}) => {
+        const firebase = getFirebase()
+        const firestore = getFirestore()
+
+        console.log(user.uid)
+
+        firestore.collection('users').doc(user.uid).delete()
+        .then(
+            user.delete()
+        ).catch(function(error) {
+            console.log(error.message)
+        })
+    }
 }

@@ -12,8 +12,8 @@ class Home extends Component {
     }
 
     render() {
-        const { apps, profile } = this.props
-        const name = profile.isEmpty ?  'Someone\'s List' : (profile.firstname + '\'s List')
+        const { apps, profile, auth } = this.props
+        const name = (profile.isEmpty || auth.isEmpty) ?  'Someone\'s List' : (profile.firstname + '\'s List')
         console.log(this.props)
         
         return (
@@ -61,10 +61,10 @@ export default compose(
             collection: "users",
             doc: authId,
             subcollections: [{ collection: "app_list", orderBy: ['unix', 'desc']}], //This orders the data by time created in the reducer state
-            storeAs:'apps'
+            storeAs:'apps' //storeAs places data into the props as props.apps
           }
         ])
-    })
+    }),
 )(Home) 
 
 /* Styling */

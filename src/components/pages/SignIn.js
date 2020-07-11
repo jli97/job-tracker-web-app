@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import firebase from '../../config/fbconfig'
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth"
+import { compose } from 'redux' 
 import { connect } from 'react-redux'
 import { createUser } from '../../store/actions/authActions'
 import { signIn } from '../../store/actions/authActions'
+import { withRouter } from 'react-router-dom'
 
 const SignIn = (props) => {
     var uiConfig = {
@@ -20,6 +22,7 @@ const SignIn = (props) => {
                     const createUser = props.createUser(authResult)
                     const signIn = props.signIn()
                     Promise.all([createUser, signIn]).then( () =>{
+                        props.history.push('/')
                         return true
                     }
                     )
@@ -52,4 +55,4 @@ const mapDispatchToProps = (dispatch) => { //connect() users this function to co
     }
 }
 
-export default connect(null, mapDispatchToProps)(SignIn)
+export default compose(connect(null, mapDispatchToProps), withRouter)(SignIn)
