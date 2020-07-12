@@ -6,6 +6,7 @@ import SignIn from './components/pages/SignIn'
 import Setting from './components/pages/Setting'
 
 class App extends Component {
+  
   render(){
     return(
       <BrowserRouter>

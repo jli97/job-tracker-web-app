@@ -2,8 +2,8 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signOut } from '../../store/actions/authActions'
-import {Button, Dropdown} from 'react-bootstrap'
-import DropdownItem from 'react-bootstrap/esm/DropdownItem'
+import { Dropdown } from 'react-bootstrap'
+
 
 const SignedInLinks = (props) => {
     return (

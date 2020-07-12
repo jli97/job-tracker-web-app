@@ -24,6 +24,7 @@ class NewAppForm extends Component {
     handleSubmit = (e) => {
         e.preventDefault()
         this.props.createApp(this.state)
+        e.target.reset()
     }
 
     render() {

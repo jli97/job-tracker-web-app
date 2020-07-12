@@ -15,6 +15,7 @@ class Home extends Component {
         const { apps, profile, auth } = this.props
         const name = (profile.isEmpty || auth.isEmpty) ?  'Someone\'s List' : (profile.firstname + '\'s List')
         console.log(this.props)
+
         
         return (
             <Container style={homePageStyle}>

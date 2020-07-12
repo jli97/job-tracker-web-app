@@ -18,8 +18,8 @@ class Setting extends Component {
     
     render() {
         return (
-            <div>
-               <Button onClick= {this.handleClick}>Delete My Account</Button>
+            <div style={settingsListStyle}>
+                <Button onClick= {this.handleClick}>Delete My Account</Button>
             </div>
         )
     }
@@ -33,3 +33,8 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default compose(connect(null, mapDispatchToProps), withRouter)(Setting)
+
+const settingsListStyle = {
+    marginTop: '1%',
+    textAlign:'center'
+}
