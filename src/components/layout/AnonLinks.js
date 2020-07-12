@@ -22,3 +22,5 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(null, mapDispatchToProps)(AnonLinks)
+
+//Test test test
