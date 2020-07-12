@@ -7,9 +7,6 @@ import { compose } from 'redux'
 import { Container, Row, Col, Dropdown} from 'react-bootstrap'
 
 class Home extends Component {
-    componentDidMount(){
-        console.log(this.props)
-    }
 
     render() {
         const { apps, profile, auth } = this.props
@@ -43,7 +40,6 @@ class Home extends Component {
 }
 
 const mapStateToProps = (state) => { //connect() users this function to connect this component to the reducer
-    console.log(state)
     return {
         apps: state.firestore.ordered.apps, //This points to the reducer state and where it stores the data
         firebase: state.firebase, //Used to get uid to point fireStoreConnect to the right app_list

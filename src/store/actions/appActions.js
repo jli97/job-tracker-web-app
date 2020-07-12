@@ -1,4 +1,4 @@
-export const createApp = (app) => {
+export const createApp = (app) => { // var app contains inputs from form
     return (dispatch, getState , {getFirebase, getFirestore}) => {
         
         const firestore = getFirestore()
@@ -19,6 +19,7 @@ export const createApp = (app) => {
         }).catch((err) => {
             dispatch({type: 'CREATE_APP_ERROR', err})
         })
+    
         
     }
 }
