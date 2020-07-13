@@ -10,9 +10,6 @@ import { withRouter } from 'react-router-dom'
 
 class SignIn extends Component {
 
-    componentDidMount() {
-        this.forceUpdate()
-    }
 
     uiConfig = {
         signInFlow: "redirect",

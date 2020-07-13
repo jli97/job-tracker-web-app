@@ -1,11 +1,17 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signOut } from '../../store/actions/authActions'
-import { Dropdown } from 'react-bootstrap'
+import { Dropdown, Button } from 'react-bootstrap'
+import { compose } from 'redux'
 
 
 const SignedInLinks = (props) => {
+    const handleClick = (e) => {
+        props.signOut()
+        props.history.push('/')
+    }
+
     return (
         <ul className="right">
             <li>
@@ -15,7 +21,7 @@ const SignedInLinks = (props) => {
                         </Dropdown.Toggle >
                             <Dropdown.Menu>
                                 <NavLink to='/settings' className="user-menu-items">Settings</NavLink>
-                                <NavLink to='/' onClick={props.signOut} className="user-menu-items">Logout</NavLink>
+                                <NavLink to='/' onClick={handleClick} className="user-menu-items">Logout</NavLink>
                             </Dropdown.Menu>
                 </Dropdown>
             </li>
@@ -30,7 +36,7 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(SignedInLinks)
+export default compose(connect(null, mapDispatchToProps), withRouter)(SignedInLinks)
 
 
 
