@@ -5,12 +5,16 @@ import { connect } from 'react-redux' //Connects this component to the redux sto
 import { firestoreConnect, getFirebase } from 'react-redux-firebase'
 import { compose } from 'redux' 
 import { Container, Row, Col, Dropdown} from 'react-bootstrap'
+import { Redirect } from 'react-router-dom'
 
 class Home extends Component {
 
     render() {
         console.log(this.props)
         const { apps, profile, auth } = this.props
+        
+        if(!auth.uid && auth.isLoaded) return <Redirect to='/'/>
+        
         var name = null
 
         if(profile.isEmpty || auth.isEmpty || auth.isAnonymous) {

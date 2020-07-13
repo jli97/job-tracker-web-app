@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { createUser, signInAnonymously } from '../../store/actions/authActions'
 import { signIn } from '../../store/actions/authActions'
-import { withRouter } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 class SignIn extends Component {
 
@@ -49,11 +49,14 @@ class SignIn extends Component {
 
     
     render() {
+        const { auth } = this.props
+        if(!auth.isEmpty && auth.isLoaded) return <Redirect to='/home'/>
+        
         console.log(this.props)
         return (
             <div style ={{textAlign:'center'}}>
                 <StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()}/>
-                <NavLink to='/home' onClick={this.handleAnonClick}>Skip for Now</NavLink>
+                <NavLink to='/' onClick={this.handleAnonClick}>Skip for Now</NavLink>
             </div>
         )
     }
@@ -68,4 +71,13 @@ const mapDispatchToProps = (dispatch) => { //connect() users this function to co
     }
 }
 
-export default compose(connect(null, mapDispatchToProps), withRouter)(SignIn)
+const mapStateToProps = (state) => { //connect() users this function to connect this component to the reducer
+    return {
+        apps: state.firestore.ordered.apps, //This points to the reducer state and where it stores the data
+        firebase: state.firebase, //Used to get uid to point fireStoreConnect to the right app_list
+        profile: state.firebase.profile,
+        auth: state.firebase.auth,
+    }
+}
+
+export default compose(connect(mapStateToProps, mapDispatchToProps),)(SignIn)

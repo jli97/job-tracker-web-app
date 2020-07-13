@@ -21,7 +21,7 @@ const SignedInLinks = (props) => {
                         </Dropdown.Toggle >
                             <Dropdown.Menu>
                                 <NavLink to='/settings' className="user-menu-items">Settings</NavLink>
-                                <NavLink to='/' onClick={handleClick} className="user-menu-items">Logout</NavLink>
+                                <NavLink to='/home' onClick={handleClick} className="user-menu-items">Logout</NavLink>
                             </Dropdown.Menu>
                 </Dropdown>
             </li>
