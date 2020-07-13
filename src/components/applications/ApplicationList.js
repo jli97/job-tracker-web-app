@@ -1,7 +1,6 @@
 import React from 'react'
 import ApplicationItem from './ApplicationItem'
 import {Container , Row} from 'react-bootstrap'
-import { auth } from 'firebase'
 
 const ApplicationList = ({apps}) =>{
     return (

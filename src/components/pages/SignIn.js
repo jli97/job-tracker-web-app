@@ -33,8 +33,6 @@ class SignIn extends Component {
                     )
 
                 } else{ //If existing user
-                    
-                    this.props.signIn()
                     return true
                 }
             },
@@ -51,6 +49,7 @@ class SignIn extends Component {
 
     
     render() {
+        console.log(this.props)
         return (
             <div style ={{textAlign:'center'}}>
                 <StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()}/>
