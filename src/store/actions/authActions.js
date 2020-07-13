@@ -8,13 +8,47 @@ export const signIn = (err) => {
     }
 }
 
+export const signInAnonymously = () => {
+    return (dispatch, getState, {getFirestore, getFirebase}) => {
+        const firebase = getFirebase()
+        const firestore = getFirestore()
+        var user = null
+
+        firebase.auth().signInAnonymously()
+
+        firebase.auth().onAuthStateChanged(function(user){
+            if(user){
+                firestore.collection('users').doc(user.uid).set({
+                    firstname: null,
+                    lastname: null,
+                    initials: null, 
+                    email: null,
+                    }).then(() => {
+                        firestore.collection('users').doc(user.uid).collection('app_list').doc().set({ //creates app_list collection
+                            job_title: 'Some Job',
+                            company: 'Some Company',
+                            status: 'Applied'
+                        }) 
+                    }
+                    ).then(() => {
+                        dispatch({type: 'CREATE_ANON_SUCCESS'}) 
+                    }).catch(err => {
+                        dispatch({type:'CREATE_ANON_ERROR', err})
+                    })
+            }else{
+                dispatch({type: 'ANON_SIGNIN_FAILED'})
+            }
+        })
+    }
+}
+
 export const signOut = () => {
     return (dispatch, getState, {getFirebase}) => {
         const firebase = getFirebase()
-
         firebase.auth().signOut().then(() => {
             dispatch({type: 'SIGNOUT_SUCCESS'})
         })
+        
     }
 }
 

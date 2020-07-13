@@ -3,15 +3,27 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import SignedInLinks from './SignedInLinks'
 import SignedOutLinks from './SignedOutLinks'
+import AnonLinks from './AnonLinks'
 
 const NavBar = (props) => {
     const { auth, profile } = props
-    const links = (auth.uid && !auth.isAnonymous) ? <SignedInLinks profile={profile}/> : <SignedOutLinks/> //Checks if user is signed in
+    var links = null
+    if(auth.uid && !auth.isAnonymous) { //Checks if user is signed in or anon 
+        links = <SignedInLinks profile={profile}/>
+    } 
+    else if(auth.isAnonymous) {
+        links = <AnonLinks/>
+    }
+
+    var home = '/'
+    if(auth.uid){
+        home = '/home'
+    }
 
     return(
         <nav className="nav-wrapper grey darken-3">
             <div className="container">
-                <Link to='/' className="brand-logo">Job Application Tracker</Link>
+                <Link to={home} className="brand-logo">Job Application Tracker</Link>
                 {auth.isLoaded && links } {/*Stops dashboard from displaying links until auth is fully loaded*/}
             </div>
         </nav>

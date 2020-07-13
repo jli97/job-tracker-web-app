@@ -11,7 +11,7 @@ const SignedInLinks = (props) => {
             <li>
                 <Dropdown>
                         <Dropdown.Toggle className='btn btn-floating gray lighten-1' variant="success" bsPrefix="dropdown-toggle-usericon">
-                            {props.profile.initials}
+                            {String(props.profile.displayName).charAt(0)}
                         </Dropdown.Toggle >
                             <Dropdown.Menu>
                                 <NavLink to='/settings' className="user-menu-items">Settings</NavLink>

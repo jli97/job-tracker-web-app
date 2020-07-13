@@ -19,7 +19,10 @@ const authReducer = (state = initState, action) => {
             }
         case 'SIGNOUT_SUCCESS':
             console.log('signout success')
-            return state
+            return {
+                ...state,
+                authError: null
+            }
 
         case 'CREATE_USER_SUCCESS':
             console.log("user created")
@@ -34,6 +37,20 @@ const authReducer = (state = initState, action) => {
                 ...state,
                 authError: action.err.message
             }
+
+        case 'CREATE_ANON_SUCCESS':
+            console.log('anon user created')
+            return {
+                ...state,
+                authError: null
+            }
+        case 'CREATE_ANON_ERROR':
+            console.log('anon user failed to create')
+            return {
+                ...state,
+                authError: null
+            }
+
         default:
             return state
     }

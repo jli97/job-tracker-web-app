@@ -9,9 +9,16 @@ import { Container, Row, Col, Dropdown} from 'react-bootstrap'
 class Home extends Component {
 
     render() {
-        const { apps, profile, auth } = this.props
-        const name = (profile.isEmpty || auth.isEmpty) ?  'Someone\'s List' : (profile.firstname + '\'s List')
         console.log(this.props)
+        const { apps, profile, auth } = this.props
+        var name = null
+
+        if(profile.isEmpty || auth.isEmpty || auth.isAnonymous) {
+            name = 'Someone\'s List'
+        }
+        else{
+            name = profile.displayName + '\'s List'
+        }
 
         
         return (

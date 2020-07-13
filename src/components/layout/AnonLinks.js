@@ -8,7 +8,8 @@ const AnonLinks = (props) => {
     return (
         <ul className="right">
             <li>
-                <NavLink to='/signin'>Sign-in to Save</NavLink>
+                <NavLink to='/anonsignin'>Sign-in to Save</NavLink>
+                <NavLink to='/' onClick={props.signOut} className="user-menu-items">Logout</NavLink>
             </li>
         </ul>
     )

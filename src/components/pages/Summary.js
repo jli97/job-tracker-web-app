@@ -4,7 +4,6 @@ export class Summary extends Component {
     render() {
         return (
             <div>
-                
             </div>
         )
     }
